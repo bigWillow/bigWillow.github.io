@@ -1,0 +1,426 @@
+{
+    "dataList": [
+        {
+            "id":1,
+            "name": "航天云网科技发展有限责任公司1",
+            "trade": "标准",
+            "garde": "A级",
+            "state": "启用",
+            "audit": "已审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":2,
+            "name": "海南民生商贸有限公司2",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":3,
+            "name": "海南民生商贸有限公司3",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":4,
+            "name": "海南民生商贸有限公司4",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":5,
+            "name": "海南民生商贸有限公司5",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":6,
+            "name": "海南民生商贸有限公司6",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":7,
+            "name": "海南民生商贸有限公司7",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":8,
+            "name": "海南民生商贸有限公司8",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":9,
+            "name": "海南民生商贸有限公司9",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":10,
+            "name": "海南民生商贸有限公司10",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":11,
+            "name": "海南民生商贸有限公司11",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":12,
+            "name": "海南民生商贸有限公司12",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":13,
+            "name": "海南民生商贸有限公司13",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":14,
+            "name": "海南民生商贸有限公司14",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":15,
+            "name": "海南民生商贸有限公司15",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":16,
+            "name": "海南民生商贸有限公司16",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":17,
+            "name": "海南民生商贸有限公司17",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":18,
+            "name": "海南民生商贸有限公司18",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":19,
+            "name": "海南民生商贸有限公司19",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":20,
+            "name": "海南民生商贸有限公司20",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":21,
+            "name": "海南民生商贸有限公司21",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":22,
+            "name": "海南民生商贸有限公司22",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":23,
+            "name": "海南民生商贸有限公司23",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":24,
+            "name": "海南民生商贸有限公司24",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":25,
+            "name": "海南民生商贸有限公司25",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":26,
+            "name": "海南民生商贸有限公司26",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":27,
+            "name": "海南民生商贸有限公司27",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":28,
+            "name": "海南民生商贸有限公司28",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":29,
+            "name": "海南民生商贸有限公司29",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":30,
+            "name": "海南民生商贸有限公司30",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":31,
+            "name": "海南民生商贸有限公司31",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":32,
+            "name": "海南民生商贸有限公司32",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":33,
+            "name": "海南民生商贸有限公司33",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":34,
+            "name": "海南民生商贸有限公司34",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":35,
+            "name": "海南民生商贸有限公司35",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":36,
+            "name": "海南民生商贸有限公司36",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":37,
+            "name": "海南民生商贸有限公司37",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":38,
+            "name": "海南民生商贸有限公司38",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        },
+        {
+            "id":39,
+            "name": "海南民生商贸有限公司39",
+            "trade": "电子",
+            "garde": "C级",
+            "state": "启用",
+            "audit": "未审核",
+            "config": "",
+            "$edit": true
+        }
+    ],
+    "column": [
+        {
+            "title": "企业名称",
+            "key": "name",
+            "$editType":"input"
+        },
+        {
+            "title": "行业",
+            "key": "trade",
+            "$editType":"select",
+            "select":[
+                {"value":"汽车","lable":"汽车"},
+                {"value":"美发","lable":"美发"},
+                {"value":"电子","lable":"电子"},
+                {"value":"标准","lable":"标准"}
+            ]
+        },
+        {
+            "title": "状态",
+            "key": "state"
+        },
+        {
+            "title": "审核状态",
+            "key": "audit",
+            "$editType":"input"
+        },
+        {
+            "title": "配置记录",
+            "key": "config",
+            "$editType":"switch"
+        }
+    ]
+}
