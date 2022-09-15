@@ -1,0 +1,170 @@
+/* base */
+body {
+	background-color: #aaa;
+}
+
+html,
+body,
+#app,
+.os-host {
+	width: 100%;
+	height: 100%;
+}
+
+.c-cont-scope {
+	width: 1100px;
+	margin: 0 auto;
+}
+
+.c-text-scope {
+	width: 826px;
+	margin: 0 auto;
+}
+
+.c-text-c {
+	text-align: center;
+}
+
+.c-fl {
+	float: left;
+}
+
+.c-fr {
+	float: right;
+}
+
+.c-flex {
+	display: flex;
+}
+
+.c-justify-space-between {
+	justify-content: space-between;
+}
+
+.c-primary-color {
+	color: #ccc;
+}
+
+.c-color-1 {
+	color: #ff6600;
+}
+
+.c-color-2 {
+	color: #ffcc66;
+}
+
+.c-bg-color-1 {
+	background-color: #1a1a1a;
+}
+
+.c-bg-color-2 {
+	background-color: #292929;
+}
+
+.c-figure-item {
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+/* header */
+
+.c-header {
+	background: url('/images/section-1-bg.png') center bottom no-repeat fixed;
+	background-size: cover;
+}
+
+.c-header-hd {
+	padding: 100px 0;
+}
+
+.c-header-hd-title {
+	font-size: 90px;
+	line-height: 120px;
+	color: rgb(254, 254, 254);
+	letter-spacing: 2px;
+	width: 85%;
+	margin: 0 auto;
+	padding-bottom: 60px;
+}
+
+.c-header-hd-title::before {
+	content: '“ ';
+	font-size: 96px;
+	font-family: fantasy;
+}
+
+.c-header-hd-title::after {
+	content: '”';
+	font-size: 96px;
+	font-family: fantasy;
+}
+
+.c-header-hd-text {
+	line-height: 60px;
+	font-size: 24px;
+	text-indent: 2em;
+	font-weight: bold;
+}
+
+.c-header-hb {
+	padding: 35px 0;
+}
+
+.c-header-hb-des {
+	line-height: 48px;
+	font-size: 28px;
+	font-weight: bold;
+	letter-spacing: 2px;
+	padding-bottom: 68px;
+}
+
+.c-header-hb-item {
+	width: 471px;
+}
+
+.c-header-hb-video {
+	width: 100%;
+	height: 668px;
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.c-header-hb-figcaption {
+	padding-top: 40px;
+	font-size: 18px;
+	line-height: 36px;
+	color: rgb(147, 147, 147);
+}
+
+.c-header-hb-text {
+	font-size: 50px;
+	color: rgb(219, 219, 219);
+	padding: 100px 0;
+}
+
+
+/* c-section-2 */
+
+.c-section-2 {
+	padding: 100px 0;
+}
+
+.c-section-2-title {
+	display: inline-block;
+	font-size: 24px;
+	color: #fff;
+	line-height: 90px;
+	border-bottom: 2px solid #fff;
+}
+
+.c-section-2-text {
+	padding-top: 56px;
+	line-height: 60px;
+	font-size: 24px;
+	text-indent: 2em;
+	font-weight: bold;
+}
+
+.c-section-2-figure {
+	padding-top: 40px;
+}

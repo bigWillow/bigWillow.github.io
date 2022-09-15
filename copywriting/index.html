@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>热浪扑向谁</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/overlayscrollbars@1.13.3.min.css">
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/vue@2.7.10.min.js"></script>
+	<script src="js/overlayscrollbars@1.13.0.min.js"></script>
+	<script src="js/overlayscrollbars-vue@3.14.1.min.js"></script>
+</head>
+<body>
+	<div id="app">
+		<overlay-scrollbars :options="scrollbarOpt" ref="scrollbar">
+			<main>
+				<article>
+					<header class="c-header c-primary-color">
+						<div class="c-header-hd" :style="{background: bgColor}">
+							<div class="c-cont-scope">
+								<h2 class="c-header-hd-title c-text-c" v-text="header.title"></h2>
+								<div class="c-text-scope">
+									<p class="c-header-hd-text" v-for="(item, index) in header.section" :key="index" v-text="item"></p>
+								</div>
+							</div>
+						</div>
+						<div class="c-cont-scope c-header-hb">
+							<div class="c-cont-scope c-text-c c-header-hb-des">
+								<span class="c-color-1" v-text="header.description.name1"></span>
+								<span v-text="header.description.conjunction"></span>
+								<span class="c-color-2" v-text="header.description.mame2"></span>
+								<span v-text="header.description.text"></span>
+							</div>
+							<div class="c-flex c-justify-space-between">
+								<figure class="c-header-hb-item" v-for="(item, index) in header.list" :key="index">
+									<img class="c-figure-item" v-if="item.type == 'img'" :src="item.src" :style="{width: item.width || '100%', height: item.height || '100%'}" alt="">
+									<video class="c-figure-item" v-if="item.type == 'video'" controls :style="{width: item.width, height: item.height}">
+										<source :src="item.src" type="video/mp4">
+										<p>你的浏览器不支持 HTML5 视频，请下载<a :href="item.src">视频文件</a>。</p>
+									</video>	
+									<figcaption class="c-header-hb-figcaption" v-text="item.description"></figcaption>
+								</figure>
+							</div>
+							<p class="c-header-hb-text" v-text="header.question"></p>
+						</div>
+					</header>
+
+
+					<section class="c-section-2 c-bg-color-1 c-primary-color">
+						<div class="c-cont-scope">
+							<h3 class="c-text-c">
+								<span class="c-section-2-title" v-text="section2.title"></span>
+							</h3>
+							<div>
+								<div v-for="(item, index) in section2.section" :key="index">
+									<!-- {{item}} -->
+									<div v-for="(val, key, i) in item" :key="i">
+										<div  class="c-text-scope" v-if="key == 'textList'">
+											<p class="c-section-2-text" v-for="(t, ti) in val" :key="ti">
+												<span v-text="t.beforeText"></span>
+												<span v-text="t.name" :class="t.nameClass"></span>
+												<span v-text="t.afterText"></span>
+											</p>
+										</div>
+										<div class="c-flex c-justify-space-between c-section-2-figure" v-if="key == 'figure'">
+											<figure v-for="(m, mi) in val" :key="mi">
+												<img class="c-figure-item" v-if="m.type == 'img'" :src="m.src" :style="{width: m.width, height: m.height}" alt="">
+												<video class="c-figure-item" v-if="m.type == 'video'" controls :style="{width: m.width, height: m.height}">
+													<source :src="m.src" type="video/mp4">
+													<p>你的浏览器不支持 HTML5 视频，请下载<a :href="m.src">视频文件</a>。</p>
+												</video>											
+											</figure>		
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+
+				</article>
+			</main>
+		</overlay-scrollbars>
+	</div>
+
+	<script src="js/main.js"></script>
+</body>
+</html>
