@@ -6,16 +6,19 @@
 	<title>热浪扑向谁</title>
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/overlayscrollbars@1.13.3.min.css">
+	<link rel="stylesheet" href="css/animate.min.css">
 	<link rel="stylesheet" href="css/main.css?v=202209160911">
 	<script src="js/vue@2.7.10.min.js"></script>
 	<script src="js/overlayscrollbars@1.13.0.min.js"></script>
 	<script src="js/overlayscrollbars-vue@3.14.1.min.js"></script>
+	<script src="js/wow.mim.js"></script>
 </head>
 <body>
 	<div id="app">
 		<overlay-scrollbars :options="scrollbarOpt" ref="scrollbar">
 			<main>
 				<article>
+					<!-- 头部介绍部分 -->
 					<header class="c-header c-primary-color">
 						<div class="c-header-hd" :style="{background: bgColor}">
 							<div class="c-cont-scope">
@@ -26,7 +29,7 @@
 							</div>
 						</div>
 						<div class="c-cont-scope c-header-hb">
-							<div class="c-cont-scope c-text-c c-header-hb-des">
+							<div class="c-cont-scope c-text-c c-header-hb-des wow zoomIn">
 								<span class="c-color-1" v-text="header.description.name1"></span>
 								<span v-text="header.description.conjunction"></span>
 								<span class="c-color-2" v-text="header.description.mame2"></span>
@@ -42,45 +45,76 @@
 									<figcaption class="c-header-hb-figcaption" v-text="item.description"></figcaption>
 								</figure>
 							</div>
-							<p class="c-header-hb-text" v-text="header.question"></p>
+							<p class="c-header-hb-text wow fadeInUp" v-text="header.question"></p>
 						</div>
 					</header>
 
-
-					<section class="c-section-2 c-bg-color-1 c-primary-color">
-						<div class="c-cont-scope">
-							<h3 class="c-text-c">
-								<span class="c-section-2-title" v-text="section2.title"></span>
+					<!-- 内容区 -->
+					<section class="c-section c-primary-color" 
+						v-for="(listItem, listItemIndex) in list" 
+						:key="listItemIndex"
+					>
+						<div v-for="(contItem, contItemIndex) in listItem.cont" 
+							:key="listItemIndex + contItemIndex + ''" 
+							class="c-section-item" 
+							:class="[(listItemIndex + contItemIndex) % 2 == 0 ? 'c-bg-color-1' : 'c-bg-color-2']"
+						>
+							<h3 class="c-cont-scope c-text-c" v-if="contItemIndex === 0" :id="listItem.title">
+								<span class="c-section-title" :class="listItem.titleClass" v-text="listItem.title"></span>
 							</h3>
-							<div>
-								<div v-for="(item, index) in section2.section" :key="index">
-									<!-- {{item}} -->
-									<div v-for="(val, key, i) in item" :key="i">
-										<div  class="c-text-scope" v-if="key == 'textList'">
-											<p class="c-section-2-text" v-for="(t, ti) in val" :key="ti">
-												<span v-text="t.beforeText"></span>
-												<span v-text="t.name" :class="t.nameClass"></span>
-												<span v-text="t.afterText"></span>
-											</p>
-										</div>
-										<div class="c-flex c-justify-space-between c-section-2-figure" v-if="key == 'figure'">
-											<figure v-for="(m, mi) in val" :key="mi">
-												<img class="c-figure-item" v-if="m.type == 'img'" :src="m.src" :style="{width: m.width, height: m.height}" alt="">
-												<video class="c-figure-item" v-if="m.type == 'video'" controls :style="{width: m.width, height: m.height}">
-													<source :src="m.src" type="video/mp4">
-													<p>你的浏览器不支持 HTML5 视频，请下载<a :href="m.src">视频文件</a>。</p>
-												</video>											
-											</figure>		
-										</div>
+							<div class="c-cont-scope">
+								<template v-for="(item, index) in contItem" :key="index">
+									<!-- 段落 -->
+									<div  class="c-text-scope">
+										<p class="c-text-scope c-section-text" :class="item.class" v-if="item.type === 'section'">
+											<span v-text="item.beforeText"></span>
+											<span v-text="item.name" :class="item.nameClass"></span>
+											<span v-text="item.afterText"></span>
+											<span class="c-section-text--light" v-text="item.afterLightText"></span>
+										</p>
 									</div>
-								</div>
+									
+									<!-- 图片 -->
+									<div :class="[item.list.length > 1 ? 'c-flex c-justify-space-between' : 'c-text-c']" class=" c-section-figure" v-if="item.type === 'img'">
+										<figure v-for="(m, mIndex) in item.list" :key="mIndex" :class="m.class">
+											<img class="c-figure-item c-figure-img" :src="m.src" :style="{width: m.width, height: m.height}" alt="">											
+											<figcaption class="c-img-figcaption" v-text="m.description"></figcaption>
+										</figure>		
+									</div>
+
+									<!-- 格言 -->
+
+									<blockquote class="c-text-scope c-blockquote" :class="item.class" v-if="item.type === 'motto'">
+										<p class="c-motto" v-text="item.text"></p>
+										<cite class="c-cite" v-text="item.cite"></cite>
+									</blockquot >
+
+								</template>
 							</div>
 						</div>
 					</section>
 
+					<transition name="custom-classes-transition" enter-active-class="animated bounceIn" leave-active-class="animated bounceOut">	 	
+						<aside class="c-aside" v-show="activeNav">
+							<nav>
+								<ul class="c-aside-nav-list">
+									<li v-for="(item, index) in list" :key="item.title" class="c-aside-nav-item">
+										<a class="c-aside-nav-link"
+											v-text="item.title" 
+											:class="[activeNav === item.title ? 'active' : '']"
+											@click="changeNav(item.title)"
+										>
+										</a>
+										<div class="c-aside-nav-line"></div>
+									</li>
+								</ul>
+							</nav>
+						</aside>	
+					</transition>
 				</article>
 			</main>
 		</overlay-scrollbars>
+
 	</div>
 
 	<script src="js/main.js?v=202209160911"></script>
