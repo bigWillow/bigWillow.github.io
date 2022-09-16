@@ -69,7 +69,7 @@ body,
 /* header */
 
 .c-header {
-	background: url('./images/section-1-bg.png') center bottom no-repeat fixed;
+	background: url('../images/section-1-bg.png') center bottom no-repeat fixed;
 	background-size: cover;
 }
 
