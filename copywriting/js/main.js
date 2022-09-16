@@ -28,13 +28,13 @@ var app = new Vue({
 			list: [
 				{
 					type: 'img',
-					src: '/images/whiteCollar/introduction.gif',
+					src: './images/whiteCollar/introduction.gif',
 					width: '471px', height: '668px',
 					description: '吴刚是某国企的员工，生活在成都高新区一所中档小区中，房价约18000元/㎡',
 				},
 				{
 					type: 'img',
-					src: '/images/courier/introduction.gif',
+					src: './images/courier/introduction.gif',
 					width: '471px', height: '668px',
 					description: '熊明远是成都温江区的一名快递员，在永宁街道租住了一居室，租金1200元/月',
 				}
@@ -60,8 +60,8 @@ var app = new Vue({
 						}
 					],
 					figure: [
-						{ src: '/images/whiteCollar/8-10-1.gif', type: 'img', width: '472px', height: '666px' },
-						{ src: '/images/courier/8-10.gif', type: 'img', width: '472px', height: '666px' },
+						{ src: './images/whiteCollar/8-10-1.gif', type: 'img', width: '472px', height: '666px' },
+						{ src: './images/courier/8-10.gif', type: 'img', width: '472px', height: '666px' },
 					],
 				},
 				{
@@ -74,8 +74,8 @@ var app = new Vue({
 						},
 					],
 					figure: [
-						{ src: '/images/kt.png', type: 'img', width: '528px', height: '436px' },
-						{ src: '/images/kt.png', type: 'img', width: '528px', height: '436px' },
+						{ src: './images/kt.png', type: 'img', width: '528px', height: '436px' },
+						{ src: './images/kt.png', type: 'img', width: '528px', height: '436px' },
 					],
 				},
 				{
@@ -94,8 +94,8 @@ var app = new Vue({
 						},
 					],
 					figure: [
-						{ src: '/images/cd.png', type: 'img', width: '528px', height: '436px' },
-						{ src: '/images/cd.png', type: 'img', width: '528px', height: '436px' },
+						{ src: './images/cd.png', type: 'img', width: '528px', height: '436px' },
+						{ src: './images/cd.png', type: 'img', width: '528px', height: '436px' },
 					],
 				},
 			]
