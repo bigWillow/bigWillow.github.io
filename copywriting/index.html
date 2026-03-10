@@ -3,18 +3,31 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<title>热浪扑向谁</title>
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/overlayscrollbars@1.13.3.min.css">
 	<link rel="stylesheet" href="css/animate.min.css">
-	<link rel="stylesheet" href="css/main.css?v=202209160911">
+	<link rel="stylesheet" href="css/main.css?v=202209202041">
 	<script src="js/vue@2.7.10.min.js"></script>
 	<script src="js/overlayscrollbars@1.13.0.min.js"></script>
 	<script src="js/overlayscrollbars-vue@3.14.1.min.js"></script>
 	<script src="js/wow.mim.js"></script>
+	<!-- <script src="js/vue-lazyload.js"></script> -->
+	<script src="js/echarts.min.js"></script>
+	<script src="js/vue-echarts.js"></script>
 </head>
 <body>
 	<div id="app">
+		<!-- banner -->
+		<transition name="custom-classes-transition" enter-active-class="animated bounceIn" leave-active-class="animated fadeOut">	 	
+			<div class="c-banner" v-show="showBanner">
+				<button class="c-banner-btn animated pulse infinite" @click="showBanner = false">
+					<i class="animated pulse infinite"></i>
+				</button>
+			</div>
+		</transition>
+
 		<overlay-scrollbars :options="scrollbarOpt" ref="scrollbar">
 			<main>
 				<article>
@@ -24,7 +37,12 @@
 							<div class="c-cont-scope">
 								<h2 class="c-header-hd-title c-text-c" v-text="header.title"></h2>
 								<div class="c-text-scope">
-									<p class="c-header-hd-text" v-for="(item, index) in header.section" :key="index" v-text="item"></p>
+									<div class="c-header-hd-text">
+										<span class="c-color-1" v-text="header.section.name1"></span>
+										<span v-text="header.section.conjunction"></span>
+										<span class="c-color-2" v-text="header.section.mame2"></span>
+										<span v-text="header.section.text"></span>
+									</div>
 								</div>
 							</div>
 						</div>
@@ -36,65 +54,85 @@
 								<span v-text="header.description.text"></span>
 							</div>
 							<div class="c-flex c-justify-space-between">
-								<figure class="c-header-hb-item" v-for="(item, index) in header.list" :key="index">
-									<img class="c-figure-item" v-if="item.type == 'img'" :src="item.src" :style="{width: item.width || '100%', height: item.height || '100%'}" alt="">
-									<video class="c-figure-item" v-if="item.type == 'video'" controls :style="{width: item.width, height: item.height}">
-										<source :src="item.src" type="video/mp4">
-										<p>你的浏览器不支持 HTML5 视频，请下载<a :href="item.src">视频文件</a>。</p>
-									</video>	
+								<figure v-for="(item, index) in header.list" :key="item.src" :class="item.class">
+									<img class="c-figure-item" v-if="item.type == 'img'" :src="item.src"  alt="">
 									<figcaption class="c-header-hb-figcaption" v-text="item.description"></figcaption>
 								</figure>
 							</div>
 							<p class="c-header-hb-text wow fadeInUp" v-text="header.question"></p>
 						</div>
 					</header>
-
+					
 					<!-- 内容区 -->
-					<section class="c-section c-primary-color" 
-						v-for="(listItem, listItemIndex) in list" 
-						:key="listItemIndex"
-					>
-						<div v-for="(contItem, contItemIndex) in listItem.cont" 
-							:key="listItemIndex + contItemIndex + ''" 
-							class="c-section-item" 
-							:class="[(listItemIndex + contItemIndex) % 2 == 0 ? 'c-bg-color-1' : 'c-bg-color-2']"
+					<div class="c-body">
+						<section class="c-section c-primary-color" 
+							v-for="(listItem, listItemIndex) in list" 
+							:key="listItemIndex"
 						>
-							<h3 class="c-cont-scope c-text-c" v-if="contItemIndex === 0" :id="listItem.title">
-								<span class="c-section-title" :class="listItem.titleClass" v-text="listItem.title"></span>
-							</h3>
-							<div class="c-cont-scope">
-								<template v-for="(item, index) in contItem" :key="index">
-									<!-- 段落 -->
-									<div  class="c-text-scope">
-										<p class="c-text-scope c-section-text" :class="item.class" v-if="item.type === 'section'">
-											<span v-text="item.beforeText"></span>
-											<span v-text="item.name" :class="item.nameClass"></span>
-											<span v-text="item.afterText"></span>
-											<span class="c-section-text--light" v-text="item.afterLightText"></span>
-										</p>
-									</div>
-									
-									<!-- 图片 -->
-									<div :class="[item.list.length > 1 ? 'c-flex c-justify-space-between' : 'c-text-c']" class=" c-section-figure" v-if="item.type === 'img'">
-										<figure v-for="(m, mIndex) in item.list" :key="mIndex" :class="m.class">
-											<img class="c-figure-item c-figure-img" :src="m.src" :style="{width: m.width, height: m.height}" alt="">											
-											<figcaption class="c-img-figcaption" v-text="m.description"></figcaption>
-										</figure>		
-									</div>
 
-									<!-- 格言 -->
+							<div v-for="(contItem, contItemIndex) in listItem.cont" 
+								:key="listItemIndex + contItemIndex + ''" 
+								class="c-section-item" 
+								:class="[(listItemIndex + contItemIndex) % 2 == 0 ? 'c-bg-color-1' : 'c-bg-color-2']"
+							>
+								<h3 class="c-cont-scope c-text-c" v-if="contItemIndex === 0" :id="listItem.title">
+									<span class="c-section-title" :class="listItem.titleClass" v-text="listItem.title"></span>
+								</h3>
+								<div class="c-cont-scope">
+									<template v-for="(item, index) in contItem" :key="index">
+										<!-- 段落 -->
+										<div  class="c-text-scope">
+											<p class="c-text-scope c-section-text" :class="item.class" v-if="item.type === 'section'">
+												<span v-text="item.beforeText"></span>
+												<span v-text="item.name" :class="item.nameClass"></span>
+												<span v-text="item.afterText"></span>
+												<span class="c-section-text--light" v-text="item.afterLightText"></span>
+											</p>
+										</div>
+										
+										<!-- 图片 -->
+										<div :class="[item.list.length > 1 ? 'c-flex c-justify-space-between' : 'c-text-c']" class=" c-section-figure" v-if="item.type === 'img'">
+											
+											<figure v-for="(m, mIndex) in item.list" :key="mIndex" :class="m.class">
+												<img class="c-figure-item c-figure-img" :src="m.src" alt="">											
+												<em class="c-img-T" v-text="m.temperature"></em>
+												<figcaption class="c-img-figcaption" v-text="m.description"></figcaption>
+											</figure>		
+										</div>
 
-									<blockquote class="c-text-scope c-blockquote" :class="item.class" v-if="item.type === 'motto'">
-										<p class="c-motto" v-text="item.text"></p>
-										<cite class="c-cite" v-text="item.cite"></cite>
-									</blockquot >
+										<!-- html -->
+										<div v-if="item.type == 'html'" class="c-cont-html">
+											<div v-html="item.html"></div>
+										</div>
+										
+										<!-- chart图表 -->
+										<div v-if="item.type == 'chart'" :class="item.class">
+											<v-chart autoresize
+												:ref="'chart' + listItemIndex" 
+												:data-pieces="item.pieces" 
+												:data-start-value="item.startValue" 
+												:data-end-value="item.endValue" 
+												:options="item.option" 
+												style="width: 100%; 
+												height: 400px;"
+											></v-chart>
+											<p class="c-chart-des" v-text="item.description"></p>
+										</div>
 
-								</template>
+										<!-- 格言 -->
+										<blockquote class="c-text-scope c-blockquote" :class="item.class" v-if="item.type === 'motto'">
+											<p class="c-motto" v-text="item.text"></p>
+											<cite class="c-cite" v-text="item.cite"></cite>
+										</blockquot >
+
+									</template>
+								</div>
 							</div>
-						</div>
-					</section>
+						</section>
+					</div>
 
-					<transition name="custom-classes-transition" enter-active-class="animated bounceIn" leave-active-class="animated bounceOut">	 	
+					<!-- 左侧导航 -->
+					<transition name="custom-classes-transition" enter-active-class="animated bounceInLeft" leave-active-class="animated bounceOutLeft">	 	
 						<aside class="c-aside" v-show="activeNav">
 							<nav>
 								<ul class="c-aside-nav-list">
@@ -111,12 +149,22 @@
 							</nav>
 						</aside>	
 					</transition>
+
+					<!-- 脚本 -->
+					<footer class="c-footer c-text-c">
+						<dl class="c-footer-list c-text-scope wow fadeInUp" v-for="(item, index) in footer" :key="index">
+							<dt class="c-footer-litst-title" v-text="item.title"></dt>
+							<dd class="c-footer-litst-item" v-for="(text, textIndex) in item.list" :key="textIndex" v-text="text"></dd>
+						</dl>
+					</footer>
 				</article>
 			</main>
 		</overlay-scrollbars>
 
+		<div style="display: none;" class="flourish-embed flourish-map" data-src="visualisation/11221223"><script src="https://public.flourish.studio/resources/embed.js"></script></div>
 	</div>
 
-	<script src="js/main.js?v=202209160911"></script>
+	<script src="js/chartOption.js?v=202209202041"></script>
+	<script src="js/main.js?v=202209202041"></script>
 </body>
 </html>

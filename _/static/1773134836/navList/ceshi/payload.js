@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/navList/ceshi", {data:[{}],fetch:{},mutations:[]});

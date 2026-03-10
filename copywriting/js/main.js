@@ -1,11 +1,19 @@
 var OverlayScrollbarsComponent = OverlayScrollbarsVue.OverlayScrollbarsComponent;
 
+// Vue.use(VueLazyload, {
+// 	preload: 1.6,
+// 	throttleWait: 0
+// })
+
+Vue.component("v-chart", VueECharts);
+
 var app = new Vue({
 	el: '#app',
 	components: {
-		'overlay-scrollbars': OverlayScrollbarsComponent
+		'overlay-scrollbars': OverlayScrollbarsComponent,
 	},
 	data: {
+		showBanner: true,
 		activeNav: '',
 		scrollbarOpt: {
 			className: 'os-theme-light',
@@ -16,33 +24,32 @@ var app = new Vue({
 		bgColor: 'rgba(26, 26, 26, 1)',
 		header: {
 			title: '他们度过的是相同的夏天吗？',
-			section: [
-				'2022年9月6日，四川盆地大部高温仍在持续，截至16时，渠县最高气温达到44℃，刷新了四川省内所有国家站的最高气温纪录（此前为四川东兴8月23日、兴文8月18日的43.8℃），自贡、内江、遂宁、达州等多地也超过了40℃。',
-				'今晚到明天，一场较强降雨即将缓解四川盆地部分地区的高温。四川省气象台24日16时发布暴雨蓝色预警，24日20时到25日20时，广元、绵阳、德阳、成都、眉山5市西部和雅安北部及乐山西北部的部分地方有暴雨(雨量50～80毫米)，局部地方有大暴雨(雨量100～150毫米)，并伴有雷电和短时阵性大风。',
-			],
-			description: {
+			section: {
 				name1: '吴刚',
 				mame2: '熊明远',
 				conjunction: '和',
-				text: '来自四川成都， 两人是同龄人， 生于1992年， 他们都经历了2022年四川成都酷烈的夏天。'
+				text: '来自四川成都，两人是同龄人，生于1992年，他们都经历了2022年四川成都酷烈的夏天。'
+			},
+			description: {
+				name1: '吴刚',
+				mame2: '熊明远',
+				conjunction: '是某国企的员工，生活在成都高新区一所中档小区中，房价约18000元/㎡，而',
+				text: '是成都温江区的一名快递员，在永宁街道租住了一居室，租金1200元/月。'
 			},
 			list: [
 				{
 					type: 'img',
 					src: './images/whiteCollar/introduction.gif',
-					width: '471px', height: '668px',
-					description: '吴刚是某国企的员工，生活在成都高新区一所中档小区中，房价约18000元/㎡',
+					class: 'c-img-box-2-1',
 				},
 				{
 					type: 'img',
 					src: './images/courier/introduction.gif',
-					width: '471px', height: '668px',
-					description: '熊明远是成都温江区的一名快递员，在永宁街道租住了一居室，租金1200元/月',
+					class: 'c-img-box-2-1',
 				}
 			],
 			question: '现在我们要问：两人是否经历的是相同的夏天？'
 		},
-
 		list: [
 			{
 				title: 'Aug.23,2022 (08:00-11:00)',
@@ -68,8 +75,8 @@ var app = new Vue({
 						{
 							type: 'img',
 							list: [
-								{ src: './images/whiteCollar/8-10-1.gif', class: 'wow fadeIn', width: '472px', height: '666px' },
-								{ src: './images/courier/8-10.gif', class: 'wow fadeIn', width: '472px', height: '666px' },
+								{ src: './images/whiteCollar/8-10-1.gif', temperature: '33℃', class: 'c-img-box-2-1 wow fadeIn', },
+								{ src: './images/courier/8-10.gif', temperature: '35℃', class: 'c-img-box-2-1 wow fadeIn', },
 							]
 						},
 						{
@@ -83,8 +90,8 @@ var app = new Vue({
 						{
 							type: 'img',
 							list: [
-								{ src: './images/kt.png', class: 'wow fadeIn', width: '528px', height: '436px' },
-								{ src: './images/kt.png', class: 'wow fadeIn', width: '528px', height: '436px' },
+								{ src: './images/kt-01.jpg', class: 'wow fadeIn', description: '吴刚家的空调' },
+								{ src: './images/kt-02.jpg', class: 'wow fadeIn', description: '熊明远出租屋的空调' },
 							]
 						},
 						{
@@ -106,8 +113,8 @@ var app = new Vue({
 						{
 							type: 'img',
 							list: [
-								{ src: './images/cd.png', class: 'wow fadeIn', width: '528px', height: '436px' },
-								{ src: './images/cd.png', class: 'wow fadeIn', width: '528px', height: '436px' },
+								{ src: './images/plot-01.jpg', class: 'wow fadeIn', description: '吴刚住的小区' },
+								{ src: './images/plot-02.jpg', class: 'wow fadeIn', description: '熊明远住的出租楼' },
 							]
 						}
 					],
@@ -141,6 +148,10 @@ var app = new Vue({
 							beforeText: '在以往的文化阐释中，夏天的热是在彰显我们习以为常的、温和的夏天模样；然而，在全球气温不断攀升的今天，关于高温的讨论在每年夏天都会如火如荼，人们往往认为这是全球变暖需要全球合作的气候行动，从被热量灼伤的痛和严重脱水，热射病的发生率来看“热”；要么“热”会出现在骇人的气候新闻中，并伴随着气候学家痛心疾首的呼吁，而这两种叙述往往并不互相重叠，也鲜少有人从社会阶层的鸿沟的视角，去考察“热”与“酷热”的距离。',
 						},
 						{
+							type: 'html',
+							html: '<div class="flourish-embed flourish-survey" data-src="visualisation/11158361"><script src="https://public.flourish.studio/resources/embed.js"></script></div>'
+						},
+						{
 							type: 'section',
 							class: 'wow fadeIn',
 							beforeText: '而这些人甚至不会想到热浪的危险，因为他们有更重要的事情要去考虑，比如——对于熊明远这样的外卖员来说，抢单是一件更重要的，关乎生存的问题，他们往往需要携带一瓶水在室外工作2-3小时，“手机跟着我出来一天，回到家比我还烫。”他们往往生活在气温更高的城市中心，为了寻觅到更好的工作；同时会租住更低廉的出租屋，这意味着基础设施，尤其是夏天的乘凉设施非常的有限，甚至为了电费，有些人会尽量减少开空调的时间，比如在睡着之前关掉空调，在无知无觉中承受夜晚的闷热直到超过身体的阈值，被高温唤醒，或者被蚊虫叮咬而无法进行高质量的睡眠，导致第二天的精力不济，甚至对身体出现慢性伤害，这些往往比热射病对人的健康影响更加隐秘。',
@@ -148,7 +159,7 @@ var app = new Vue({
 						{
 							type: 'img',
 							list: [
-								{ src: './images/map-8-10.png', class: 'wow fadeIn', description: '两人居住地的地图', width: '826px', height: '100%' },
+								{ src: './images/map-8-10.png', class: 'c-img-box-1 wow fadeIn', description: '两人居住地的地图' },
 							]
 						},
 						{
@@ -167,9 +178,22 @@ var app = new Vue({
 							beforeText: '这是一场反常的高温，因为高温而产生巨大用电量使得这所城市陷入了能源短缺的境况，这个处于四川西南部的，水电发电大省，在这个夏天发出了痛苦的呻吟：全省限电，工厂停产，保障民生用电，于是霓虹灯熄灭，整个城市陷入了一种停摆的寂静之中。这种死一样的寂静慢随着死神一样的、残酷的高温，来到了每个人的身边，使得人们开始正视，高温的危险。但是这伴随着一种惯性：认为高温只是一场气候的灾害，那么这类的灾难总是小概率的。但，如若极端的灾难能够放大、呈现出人们从前习以为常的苦难，那么反观这场的高温，我们也就绝不应止步于此。',
 						},
 						{
+							type: 'chart',
+							class: 'wow fadeIn',
+							option: JSON.parse(JSON.stringify(lineOptions)),
+							startValue: '8:00',
+							endValue: '10:00',
+							pieces: [0, 2],
+							description: '红色的线明显高于黄色的线，熊明远忍受着更大强度的高温。这取决于很多方面的因素，其中就包括基础设施和工作环境的鸿沟。'
+						},
+						{
 							type: 'section',
 							class: 'wow fadeIn',
 							beforeText: '虽然人人在夏天都感觉到热，但显而易见的是，往往是阶层较低的人更经常暴露在炎热之中。针对北美洛杉矶的一项城市研究发现，建筑环境、社会经济脆弱性和高温导致的死亡之间有很强的相关性，有色人种社区和低收入人口不成比例地受到热岛风险因素的影响，而移民工人死于高温热浪的可能性是美国公民的三倍。',
+						},
+						{
+							type: 'html',
+							html: '<div class="flourish-embed flourish-survey" data-src="visualisation/11224829"><script src="https://public.flourish.studio/resources/embed.js"></script></div>',
 						},
 						{
 							type: 'section',
@@ -200,9 +224,16 @@ var app = new Vue({
 						{
 							type: 'img',
 							list: [
-								{ src: './images/whiteCollar/8-10-2.gif', class: 'wow fadeIn', width: '472px', height: '666px' },
-								{ src: './images/courier/11-13.gif', class: 'wow fadeIn', width: '472px', height: '666px' },
+								{ src: './images/whiteCollar/8-10-2.gif', temperature: '36℃', class: 'c-img-box-2-1 wow fadeIn' },
+								{ src: './images/courier/11-13.gif', temperature: '38℃', class: 'c-img-box-2-1 wow fadeIn' },
 							]
+						},
+						{
+							type: 'chart',
+							option: JSON.parse(JSON.stringify(lineOptions)),
+							startValue: '11:00',
+							endValue: '13:00',
+							pieces: [3, 5],
 						},
 						{
 							type: 'section',
@@ -212,9 +243,20 @@ var app = new Vue({
 							afterText: '的月薪推算，熊明远需要在每日户外工作11小时才可以赶得上吴刚的工资水平，而这也正是熊明远每天在外长时间超负荷工作的原因，过去一个月，熊明远的工作时间超过300小时，不过今晚他觉得实在是太过困倦，于是打算20:00就结束自己的工作。'
 						},
 						{
+							type: 'section',
+							beforeText: '',
+							name: '熊明远',
+							nameClass: 'c-color-2',
+							afterText: '一直希望能攒点钱买一套小一点的房子，在成都，他觉得这个目标的实现还是需要年头的。对他来说，每送一单，就离这个目标多一点的可能。更何况，在高温下的工作也会得到一定的报偿，这个月他得到了一笔高温津贴，虽然对熊明远的生活没什么实质的改善，但他觉得自己得到了重视和尊重。这样的高温津贴，全国大部分地区都在颁行。'
+						},
+						{
+							type: 'html',
+							html: '<div class="flourish-embed flourish-map" data-src="visualisation/11221223"><script src="https://public.flourish.studio/resources/embed.js"></script></div>'
+						},
+						{
 							type: 'img',
 							list: [
-								{ src: './images/map-11-13.png', class: 'wow fadeIn', description: '两人工作地点的地图', width: '826px', height: '100%' },
+								{ src: './images/map-11-13.png', class: 'c-img-box-1 wow fadeIn', description: '两人工作地点的地图' },
 							]
 						}
 					]
@@ -253,9 +295,16 @@ var app = new Vue({
 						{
 							type: 'img',
 							list: [
-								{ src: './images/whiteCollar/14-15.gif', class: 'wow fadeIn', width: '472px', height: '666px' },
-								{ src: './images/courier/14-15-1.gif', class: 'wow fadeIn', width: '472px', height: '666px' },
+								{ src: './images/whiteCollar/14-15.gif', temperature: '24℃', class: 'c-img-box-2-1 wow fadeIn' },
+								{ src: './images/courier/14-15-1.gif', temperature: '38℃', class: 'c-img-box-2-1 wow fadeIn' },
 							]
+						},
+						{
+							type: 'chart',
+							option: JSON.parse(JSON.stringify(lineOptions)),
+							pieces: [6, 7],
+							startValue: '14:00',
+							endValue: '15:00',
 						},
 					]
 				]
@@ -276,9 +325,16 @@ var app = new Vue({
 						{
 							type: 'img',
 							list: [
-								{ src: './images/whiteCollar/16-17.gif', class: 'wow fadeIn', width: '472px', height: '666px' },
-								{ src: './images/courier/16-17.gif', class: 'wow fadeIn', width: '472px', height: '666px' },
+								{ src: './images/whiteCollar/16-17.gif', temperature: '25℃', class: 'c-img-box-2-1 wow fadeIn', },
+								{ src: './images/courier/16-17.gif', temperature: '38℃', class: 'c-img-box-2-1 wow fadeIn', },
 							]
+						},
+						{
+							type: 'chart',
+							option: JSON.parse(JSON.stringify(lineOptions)),
+							pieces: [8, 9],
+							startValue: '16:00',
+							endValue: '17:00',
 						},
 						{
 							type: 'section',
@@ -328,21 +384,113 @@ var app = new Vue({
 						{
 							type: 'img',
 							list: [
-								{ src: './images/whiteCollar/18-20-1.gif', class: 'wow fadeIn', width: '472px', height: '666px' },
-								{ src: './images/courier/18-20.gif', class: 'wow fadeIn', width: '472px', height: '666px' },
+								{ src: './images/whiteCollar/18-20-1.gif', temperature: '38℃', class: 'c-img-box-2-1 wow fadeIn', },
+								{ src: './images/courier/18-20.gif', temperature: '38℃', class: 'c-img-box-2-1 wow fadeIn', },
 							]
+						},
+						{
+							type: 'chart',
+							option: JSON.parse(JSON.stringify(lineOptions)),
+							pieces: [10, 12],
+							startValue: '18:00',
+							endValue: '20:00',
 						},
 					]
 				]
 			}
 		],
+		chartData: [
+			{
+				name: '吴刚',
+				type: 'line',
+				smooth: true,
+				itemStyle: {
+					normal: {
+						color: 'rgba(255, 0, 0, 0.15)',
+					}
+				},
+				data: [
+					{ value: 32, label: '小区晨跑' },
+					{ value: 33, label: '晨跑至地铁站' },
+					{ value: 27, label: '达到工作地点' },
+					{ value: 34, label: '开协调会' },
+					{ value: 36, label: '骑车去地铁站' },
+					{ value: 37, label: '去食堂吃饭 回家午休' },
+					{ value: 24, label: '乘坐私家车上班' },
+					{ value: 24, label: '乘私家车到达' },
+					{ value: 25, label: '拟制报告和会议结果' },
+					{ value: 25, label: '下班' },
+					{ value: 38, label: '到达小区' },
+					{ value: 37, label: '做核酸' },
+					{ value: 24, label: '休息时间' },
+				]
+			},
+			{
+				name: '熊明远',
+				type: 'line',
+				smooth: true,
+				itemStyle: {
+					normal: {
+						color: 'rgba(255, 255, 0, 0.15)'
+					}
+				},
+				data: [
+					{ value: 33, label: '起床' },
+					{ value: 34, label: '出发上班' },
+					{ value: 35, label: '接单在接单的路上' },
+					{ value: 36, label: '接了一个临时单' },
+					{ value: 37, label: '取了一个肯德基的订单' },
+					{ value: 38, label: '单子变多了' },
+					{ value: 38, label: '单子变少了' },
+					{ value: 25, label: '给电动车充电回去歇一会' },
+					{ value: 38, label: '从市中心出发送一单奶茶' },
+					{ value: 38, label: '马上超时,赶快爬楼' },
+					{ value: 39, label: '接到一单加急单' },
+					{ value: 38, label: '去店家取单' },
+					{ value: 38, label: '去拿最后一单，预计40min送到' },
+				],
+			},
+
+		],
+		footer: [
+			{
+				title: '数据来源',
+				list: [
+					'温度实测：德力西高精度温度计（THM-01型号）',
+					'刘咏梅等，《罕见高温职业性热射病的诊断分析》',
+					'界面新闻，《高温下的不平等：“热浪”隐蔽自己，伤害最底层的人们》',
+					'Yanjun Wang，Anqian Wang，Jianqing zhai等，《Tens of thousands additional deaths',
+					'annually in cities of China between 1.5℃ and 2.0℃ warming》，《Science》,2020,09',
+				]
+			},
+			{
+				title: '小组成员分工',
+				list: [
+					'统筹：王洲淼',
+					'数据处理与可视化：姚昕滢 索梓涵',
+					'采访整理与文案撰写：王洲淼 陶雨嫣',
+					'数据：肖潇 王洲淼 索梓涵 姚昕滢'
+				]
+			}
+		]
 
 	},
 	created() {
+
 		this.scrollbarOpt.callbacks.onScroll = this.onScrollFn
 	},
 	mounted() {
+
 		this.inWow()
+
+		// setTimeout(() => {
+		// 	this.changeNav('Aug.23,2022 (14:00-15:00)')
+		// }, 500)
+
+
+		// setTimeout(() => {
+		// 	lineOptions.series[0].data = [111, 11, 1, 1, 2, 50, 60]
+		// }, 10000)
 	},
 	methods: {
 		// 初始化动画插件
@@ -366,19 +514,83 @@ var app = new Vue({
 			}
 
 			var wh = this.$refs.scrollbar.$el.offsetHeight
-			var dh = document.getElementById('Aug.23,2022 (08:00-11:00)').offsetTop
-			console.log(dh, y, dh - y - wh);
-			this.list.forEach(item => {
+			// console.log(dh, y, dh - y - wh);
+			this.list.forEach((item, index) => {
 				var dt = document.getElementById(item.title).offsetTop
 				var dh = document.getElementById(item.title).offsetHeight
 				var num = dt - y - dh - wh
 				if (num < 0) {
 					this.activeNav = item.title
 				}
+
+				// 加载折线图
+				var chart = this.$refs['chart' + index][0]
+				var chartT = chart.$el.offsetTop
+				var chartH = chart.$el.offsetHeight
+				var chartNum = chartT - y - wh;
+				if (chartNum < 0) {
+					if (chart.options.series.length == 0) {
+						var pieces = chart.$el.dataset.pieces.split(',').map(item => Number(item))
+						var endValue = chart.$el.dataset.endValue
+						var startValue = chart.$el.dataset.startValue
+						// console.log(index, chart);
+						chart.options.series = this.chartData
+
+						setTimeout(() => {
+							// console.log(chart, pieces, 5566);
+							chart.options.visualMap = [
+								{
+									show: false,
+									type: 'piecewise',
+									dimension: 0,
+									seriesIndex: 0,
+									pieces: [
+										{
+											gt: pieces[0],
+											lte: pieces[1],
+											color: 'rgba(255, 0, 0, 1)',
+										},
+									],
+									outOfRange: {
+										color: ['rgba(255, 0, 0, 0.15)'],
+										symbolSize: [0]
+									}
+								},
+								{
+									show: false,
+									dimension: 0,
+									seriesIndex: 1,
+									type: 'piecewise',
+									pieces: [
+										{
+											gt: pieces[0],
+											lte: pieces[1],
+											color: 'rgba(255, 255, 0, 1)'
+										},
+									],
+									outOfRange: {
+										color: ['rgba(255, 255, 0, 0.15)'],
+										symbolSize: [0]
+									}
+								}
+							]
+						}, 1500)
+
+						// setTimeout(() => {
+						// 	chart.options.dataZoom = {
+						// 		type: "inside",
+						// 		startValue: startValue,
+						// 		endValue: endValue
+						// 	}
+						// }, 2000)
+					}
+
+				}
+
 			})
 
 			var fd = document.getElementById(this.list[0].title).offsetTop;
-			console.log(y, fd);
+			// console.log(y, fd);
 
 			if (y < fd - wh) {
 				this.activeNav = ''
@@ -390,7 +602,6 @@ var app = new Vue({
 			var instances = this.$refs.scrollbar.osInstance();
 			var dom = document.getElementById(id);
 			instances.scroll({ el: dom, block: "begin" }, 500);
-		}
-
+		},
 	},
 })

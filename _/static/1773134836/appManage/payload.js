@@ -1,0 +1,1 @@
+__NUXT_JSONP__("/appManage", {data:[{}],fetch:{},mutations:[]});
